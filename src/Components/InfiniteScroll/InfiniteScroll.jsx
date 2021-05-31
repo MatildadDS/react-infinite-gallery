@@ -8,6 +8,7 @@ export default function InfiniteScroll() {
     const [dataImg, setDataImg] = useState([[], [],[]]) 
     const [pageIndex, setPageIndex] = useState(1)
     const [searchState, setSearchState] = useState('random')
+    const[firstCall, setFirstCall] = useState(true)
 
     const infiniteFetchData = () => {
 
@@ -38,10 +39,50 @@ export default function InfiniteScroll() {
             }
 
             setDataImg(newFreshState)
+            setFirstCall(false)
         })
     }
 
-    console.log(dataImg);
+    const searchFetchData = () => {
+
+        fetch(`https://api.unsplash.com/search/photos?page=${pageIndex}&per_page=30&query=${searchState}&client_id=uQZqRt9wXrpoSLoTXvPsxnkMn31QNRmSbsu2V8_acnM`)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+
+            const imgsReceived = [];
+
+            data.results.forEach((img) => {
+                imgsReceived.push(img.urls.regular)
+            })
+
+            const newFreshState =[
+                [],
+                [],
+                [],
+            ]
+
+            let index = 0;
+            for(let i = 0; i < 3; i++){
+                for(let j = 0; j < 10; j++){
+                    newFreshState[i].push(imgsReceived[index])
+                    index++;
+                }
+            }
+
+            setDataImg(newFreshState)
+        })
+    }
+    {/*console.log(dataImg);*/}
+
+
+    useEffect(() => {
+        if(firstCall) return;
+        searchFetchData();
+
+    }, [searchState])
+
 
     useEffect(() => {
 
@@ -51,6 +92,9 @@ export default function InfiniteScroll() {
  
     const handleSearch = e => {
         e.preventDefault()
+
+        setSearchState(inpRef.current.value)
+        setPageIndex(1)
     }
 
     const inpRef = useRef()
@@ -65,11 +109,11 @@ export default function InfiniteScroll() {
 
     const infiniteCheck = () => {
 
-        console.log('HELLO CHECK!')
+        {/*console.log('HELLO CHECK!')*/}
         const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
 
         if(scrollHeight - scrollTop === clientHeight) {
-            console.log('BOTTOM!')
+            {/*console.log('BOTTOM!')*/}
             setPageIndex(pageIndex => pageIndex + 1)
         }
     }
