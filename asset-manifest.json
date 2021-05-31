@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-infinite-gallery/static/css/main.fff8c135.chunk.css",
+    "main.js": "/react-infinite-gallery/static/js/main.cb2316c7.chunk.js",
+    "main.js.map": "/react-infinite-gallery/static/js/main.cb2316c7.chunk.js.map",
+    "runtime-main.js": "/react-infinite-gallery/static/js/runtime-main.2cd3cd8a.js",
+    "runtime-main.js.map": "/react-infinite-gallery/static/js/runtime-main.2cd3cd8a.js.map",
+    "static/js/2.7222271e.chunk.js": "/react-infinite-gallery/static/js/2.7222271e.chunk.js",
+    "static/js/2.7222271e.chunk.js.map": "/react-infinite-gallery/static/js/2.7222271e.chunk.js.map",
+    "index.html": "/react-infinite-gallery/index.html",
+    "static/css/main.fff8c135.chunk.css.map": "/react-infinite-gallery/static/css/main.fff8c135.chunk.css.map",
+    "static/js/2.7222271e.chunk.js.LICENSE.txt": "/react-infinite-gallery/static/js/2.7222271e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2cd3cd8a.js",
+    "static/js/2.7222271e.chunk.js",
+    "static/css/main.fff8c135.chunk.css",
+    "static/js/main.cb2316c7.chunk.js"
+  ]
+}
