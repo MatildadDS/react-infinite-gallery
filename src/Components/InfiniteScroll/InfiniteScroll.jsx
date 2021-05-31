@@ -47,13 +47,32 @@ export default function InfiniteScroll() {
 
         infiniteFetchData();
         
-    }, [])
+    }, [pageIndex])
  
     const handleSearch = e => {
         e.preventDefault()
     }
 
     const inpRef = useRef()
+
+    useEffect(() => {
+        window.addEventListener('scroll', infiniteCheck);
+
+        return () => {
+            window.removeEventListener('scroll', infiniteCheck)
+        }
+    }, [])
+
+    const infiniteCheck = () => {
+
+        console.log('HELLO CHECK!')
+        const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+
+        if(scrollHeight - scrollTop === clientHeight) {
+            console.log('BOTTOM!')
+            setPageIndex(pageIndex => pageIndex + 1)
+        }
+    }
 
     return (
         <div className='container'>
